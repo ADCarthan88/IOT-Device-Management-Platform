@@ -1,0 +1,39 @@
+{
+  "name": "multi-cloud-monitoring-dashboard",
+  "version": "1.0.0",
+  "description": "A multi-cloud monitoring dashboard to visualize and manage cloud services.",
+  "main": "backend/src/index.ts",
+  "scripts": {
+    "start": "node backend/dist/index.js",
+    "build": "tsc -p backend/tsconfig.json && tsc -p frontend/tsconfig.json",
+    "dev": "concurrently \"ts-node backend/src/index.ts\" \"react-scripts start\"",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "dotenv": "^8.2.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.2",
+    "ts-node": "^9.1.1",
+    "jest": "^26.6.3",
+    "concurrently": "^5.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/multi-cloud-monitoring-dashboard.git"
+  },
+  "keywords": [
+    "cloud",
+    "monitoring",
+    "dashboard"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/multi-cloud-monitoring-dashboard/issues"
+  },
+  "homepage": "https://github.com/yourusername/multi-cloud-monitoring-dashboard#readme"
+}

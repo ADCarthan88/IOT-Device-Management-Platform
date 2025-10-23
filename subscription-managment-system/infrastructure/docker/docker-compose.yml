@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: subscriptions_db
+      POSTGRES_USER: subs_user
+      POSTGRES_PASSWORD: yourpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile
+    env_file:
+      - ../../.env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
